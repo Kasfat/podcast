@@ -6,14 +6,14 @@ import PlaylistIcon from "../../assets/images/sidebar/playlist.svg"
 
 const SideBar = () => {
   return (
-    <div className=' w-[210px] h-full bg-[#3B3B3B] px-6 py-10 absolute top-0 left-0'>
+    <div className=' w-[210px] bg-[#3B3B3B] px-6 py-10 absolute top-0 left-0 min-h-screen'>
         <div className=' flex justify-start items-center gap-2'>
            
             <img className=''src={PodcastIcon}/>
 
             <p className=' text-2xl font-bold text-white main_title'>Fauget</p>
         </div>
-        <div className=' mt-6 flex flex-col justify-between h-[425px]'>
+        <div className=' mt-6 flex flex-col justify-between min-h-screen'>
         <div className=''>
             <div className=' flex justify-between items-center'>
             <p className=' text-white'>Menu</p>
