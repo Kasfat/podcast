@@ -6,7 +6,7 @@ import PlaylistIcon from "../../assets/images/sidebar/playlist.svg"
 
 const SideBar = () => {
   return (
-    <div className=' w-[210px] bg-[#3B3B3B] px-6 py-10 absolute top-0 left-0 min-h-screen'>
+    <div className=' w-[210px] bg-[#3B3B3B] px-6 py-10 absolute top-0 left-0 '>
         <div className=' flex justify-start items-center gap-2'>
            
             <img className=''src={PodcastIcon}/>

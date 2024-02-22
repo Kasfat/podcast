@@ -2,12 +2,13 @@ import React from 'react'
 import Img1 from '../../assets/images/musiclist/img1.jpg'
 import StartIcon from '../../assets/starticon.svg'
 
-const MusicItem = () => {
+const MusicItem = ({name,picture}) => {
+  
   return (
     <div className='relative'>
-        <img style={{borderRadius:'30px'}} className='' src={Img1}/>
-        <img className=' absolute top-6 left-16' src={StartIcon}/>
-        <p className='text-white text-center mt-2 font-semibold'>Music</p>
+        <img style={{borderRadius:'30px'}} className='' src={picture}/>
+        <div className='absolute bottom-8 inset-0 flex justify-center items-center '><img className='' src={StartIcon}/></div>
+        <p className='text-white text-center mt-2 font-semibold'>{name}</p>
     </div>
   )
 }

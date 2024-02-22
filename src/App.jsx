@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -7,12 +7,31 @@ import Header from './components/Header/Header'
 import Banner from './components/Banner/Banner'
 import SubMenu from './components/SubMenu/SubMenu'
 import MainBody from './components/MainBody/MainBody'
+import API from './Services/GlobalApi'
 
 
 
 function App() {
-  
+  const [myData, setMyData] = useState([]);
+  const [isError, setIsError] = useState("");
+  const [loading, setLoading] = useState(false);
 
+ // using Async Await
+ const getMyPostData = async () => {
+  try {
+    setLoading(true);
+    const res = await API.get();
+    setMyData(res.data.data);
+    setLoading(false);
+  } catch (error) {
+    setIsError(error.message);
+  }
+};
+
+// NOTE:  calling the function
+useEffect(() => {
+  getMyPostData();
+}, []);
   return (
     <>
       <SideBar/>
@@ -20,7 +39,8 @@ function App() {
       <Header/>
       <Banner/>
       <SubMenu/>
-      <MainBody/>
+      { loading ? (<p className='text-white'>Loading....</p>): <MainBody data={myData}/>}
+      
       </div>
       
     </>
