@@ -1,65 +1,69 @@
-import { useEffect, useState } from 'react'
-import './App.css'
-import SideBar from './components/SideBar/SideBar'
-import Header from './components/Header/Header'
-import Banner from './components/Banner/Banner'
-import SubMenu from './components/SubMenu/SubMenu'
-import MainBody from './components/MainBody/MainBody'
-import API from './Services/GlobalApi'
-import SignUpModal from './components/SignUpModal/SignUpModal'
-
-
+import { useEffect, useState } from "react";
+import "./App.css";
+import SideBar from "./components/SideBar/SideBar";
+import Header from "./components/Header/Header";
+import Banner from "./components/Banner/Banner";
+import SubMenu from "./components/SubMenu/SubMenu";
+import MainBody from "./components/MainBody/MainBody";
+import API from "./Services/GlobalApi";
+import SignUpModal from "./components/SignUpModal/SignUpModal";
+import SignInModal from "./components/SignInModal/SignInModal";
 
 function App() {
   const [myData, setMyData] = useState([]);
   const [isError, setIsError] = useState("");
   const [loading, setLoading] = useState(false);
   const [showSignUpModal, setShowSignUpModal] = useState(false);
+  const [showSignInModal, setShowSignInModal] = useState(false);
 
- // using Async Await
- const getMyPostData = async () => {
-  try {
-    setLoading(true);
-    const res = await API.get();
-    setMyData(res.data.data);
-    setLoading(false);
-  } catch (error) {
-    setIsError(error.message);
-  }
-};
+  // using Async Await
+  const getMyPostData = async () => {
+    try {
+      setLoading(true);
+      const res = await API.get();
+      setMyData(res.data.data);
+      setLoading(false);
+    } catch (error) {
+      setIsError(error.message);
+    }
+  };
 
-// NOTE:  calling the function
-useEffect(() => {
-  getMyPostData();
-}, []);
+  // NOTE:  calling the function
+  useEffect(() => {
+    getMyPostData();
+  }, []);
 
-const handelSignUp = ()=>{
-  return setShowSignUpModal(true);
-}
+  const handelSignUp = () => {
+    return setShowSignUpModal(true);
+  };
 
-const handleOnClose = (e) => {
-  if(e.target.id === "container")
-  setShowSignUpModal(false);
-}
+  const handleSignIn = () => setShowSignInModal(true);
 
-
+  const handleOnClose = (e) => {
+    if (e.target.id === "container") {
+      setShowSignUpModal(false);
+      setShowSignInModal(false);
+    }
+  };
 
   return (
     <>
-      <SideBar/>
-      
-      <div className='ml-[210px] mt-6 px-10'>
-      <Header handelSignUp = {handelSignUp} />
-      {showSignUpModal && <SignUpModal handleOnClose = {handleOnClose}/>}
-      
-      <Banner/>
-      <SubMenu/>
-      { loading ? (<p className='text-white'>Loading....</p>): <MainBody data={myData}/>}
-      
+      <SideBar />
+      <div className="ml-[210px] mt-6 px-10">
+        <Header handelSignUp={handelSignUp} handleSignIn={handleSignIn} />
+
+        <Banner />
+        <SubMenu />
+        {loading ? (
+          <p className="text-white">Loading....</p>
+        ) : (
+          <MainBody data={myData} />
+        )}
       </div>
-        
+      {showSignUpModal && <SignUpModal handleOnClose={handleOnClose} />}
+      {showSignInModal && <SignInModal handleOnClose={handleOnClose} />}
     </>
-  )
+  );
 }
 
-export default App
+export default App;
