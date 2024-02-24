@@ -34,9 +34,10 @@ function App() {
 
   // NOTE:  calling the function
   useEffect(() => {
+    
     getMyPostData();
   }, []);
- 
+
   
   useEffect(() => {
     window.innerWidth > 1024 ? setShowSideBar(true) : setShowSideBar(false);

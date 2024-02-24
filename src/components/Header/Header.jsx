@@ -11,8 +11,8 @@ const Header = ({handelSignUp,handleSignIn, showSideBar, handleShowSideBar}) => 
         <p className='text-white text-[12px] md:text-[16px] font-semibold lg:text-2xl'>Welcome to fauget music services</p>
         </div>
         <div className='flex gap-2 md:gap-16'>
-        <Button  onClick={handleSignIn}>Sign in</Button>
-        <Button  onClick={handelSignUp}>Sign up</Button>
+        <Button color='dark'  onClick={handleSignIn}>Sign in</Button>
+        <Button color='light'  onClick={handelSignUp}>Sign up</Button>
         </div>
     </div>
   )

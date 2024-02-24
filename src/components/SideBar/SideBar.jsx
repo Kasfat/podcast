@@ -5,7 +5,6 @@ import SettingIcon from "../../assets/images/sidebar/setting.svg"
 import PlaylistIcon from "../../assets/images/sidebar/playlist.svg"
 
 const SideBar = ({showSideBar, handleOnClose}) => {
-    console.log(showSideBar);
   return (
      <div id="container_sidebar" onClick={handleOnClose} className={showSideBar === true ? "fixed inset-0 z-50 flex items-center justify-center overflow-auto bg-black bg-opacity-50 lg:static lg: bg-none lg:bg-opacity-0": 'hidden'}>
         <div className={ showSideBar === true ? ' w-[210px] bg-[#3B3B3B] px-6 py-10 absolute z-50 top-0 left-0 min-h-screen' : 'hidden'}>
