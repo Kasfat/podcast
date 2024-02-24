@@ -1,5 +1,6 @@
 import React from 'react'
 import { HiMenu } from "react-icons/hi";
+import Button from '../Button/Button';
 
 const Header = ({handelSignUp,handleSignIn, showSideBar, handleShowSideBar}) => {
 
@@ -10,8 +11,8 @@ const Header = ({handelSignUp,handleSignIn, showSideBar, handleShowSideBar}) => 
         <p className='text-white text-[12px] md:text-[16px] font-semibold lg:text-2xl'>Welcome to fauget music services</p>
         </div>
         <div className='flex gap-2 md:gap-16'>
-        <button className='text-white text-[12px] px-2 py-1 rounded-full bg-[#060606] md:px-12 lg:py-2' onClick={handleSignIn}>Sign in</button>
-        <button className='text-white text-[12px] px-2 py-1 rounded-full bg-[#3B3B3B] md:px-12 lg:py-2' onClick={handelSignUp}>Sign up</button>
+        <Button  onClick={handleSignIn}>Sign in</Button>
+        <Button  onClick={handelSignUp}>Sign up</Button>
         </div>
     </div>
   )
