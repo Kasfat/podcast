@@ -4,16 +4,18 @@ import PodcastIcon from "../../assets/images/sidebar/podcast.svg"
 import SettingIcon from "../../assets/images/sidebar/setting.svg"
 import PlaylistIcon from "../../assets/images/sidebar/playlist.svg"
 
-const SideBar = () => {
+const SideBar = ({showSideBar, handleOnClose}) => {
+    console.log(showSideBar);
   return (
-    <div className=' w-[210px] bg-[#3B3B3B] px-6 py-10 absolute top-0 left-0 '>
+     <div id="container" onClick={handleOnClose} className={showSideBar === true ? "fixed inset-0 z-50 flex items-center justify-center overflow-auto bg-black bg-opacity-50 lg:static lg: bg-none lg:bg-opacity-0": 'hidden'}>
+        <div className={ showSideBar === true ? ' w-[210px] bg-[#3B3B3B] px-6 py-10 absolute z-50 top-0 left-0 min-h-screen' : 'hidden'}>
         <div className=' flex justify-start items-center gap-2'>
            
             <img className=''src={PodcastIcon}/>
 
             <p className=' text-2xl font-bold text-white main_title'>Fauget</p>
         </div>
-        <div className=' mt-6 flex flex-col justify-between min-h-screen'>
+        <div className=' mt-6 flex flex-col justify-between gap-[100px]'>
         <div className=''>
             <div className=' flex justify-between items-center'>
             <p className=' text-white'>Menu</p>
@@ -45,6 +47,8 @@ const SideBar = () => {
         
         
     </div>
+     </div>
+    
   )
 }
 

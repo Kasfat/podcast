@@ -13,8 +13,12 @@ function App() {
   const [myData, setMyData] = useState([]);
   const [isError, setIsError] = useState("");
   const [loading, setLoading] = useState(false);
+
   const [showSignUpModal, setShowSignUpModal] = useState(false);
   const [showSignInModal, setShowSignInModal] = useState(false);
+
+  const [showSideBar, setShowSideBar] = useState(true);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   // using Async Await
   const getMyPostData = async () => {
@@ -32,6 +36,28 @@ function App() {
   useEffect(() => {
     getMyPostData();
   }, []);
+ 
+  
+  useEffect(() => {
+    window.innerWidth > 1024 ? setShowSideBar(true) : setShowSideBar(false);
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+      if (window.innerWidth > 1024) {
+        setShowSideBar(true); // Show sidebar by default if screen width > 1024px
+      } else {
+        setShowSideBar(false); // Hide sidebar by default if screen width <= 1024px
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  // const toggleSidebar = () => {
+  //   setShowSidebar(!showSidebar);
+  // };
 
   const handelSignUp = () => {
     return setShowSignUpModal(true);
@@ -39,18 +65,21 @@ function App() {
 
   const handleSignIn = () => setShowSignInModal(true);
 
+  const handleShowSideBar = () => setShowSideBar(!showSideBar)
+
   const handleOnClose = (e) => {
     if (e.target.id === "container") {
       setShowSignUpModal(false);
       setShowSignInModal(false);
+      setShowSideBar(false)
     }
   };
 
   return (
     <>
-      <SideBar />
-      <div className="ml-[210px] mt-6 px-10">
-        <Header handelSignUp={handelSignUp} handleSignIn={handleSignIn} />
+      <SideBar showSideBar={showSideBar} handleOnClose={handleOnClose}/>
+      <div className={showSideBar === true ? "ml-0 mt-6 px-2 lg:ml-[210px] md:px-4 lg:mt-6 lg:px-10": 'ml-0 mt-6 px-2 md:px-4 lg:px-10'}>
+        <Header handelSignUp={handelSignUp} handleSignIn={handleSignIn} showSideBar={showSideBar} handleShowSideBar={handleShowSideBar} />
 
         <Banner />
         <SubMenu />
