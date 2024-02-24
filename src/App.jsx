@@ -71,6 +71,9 @@ function App() {
     if (e.target.id === "container") {
       setShowSignUpModal(false);
       setShowSignInModal(false);
+      
+    }
+    if(e.target.id === "container_sidebar"){
       setShowSideBar(false)
     }
   };

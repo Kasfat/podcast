@@ -3,7 +3,7 @@ import Button from "../Button/Button";
 
 const SubMenu = () => {
   return (
-    <div className=" grid grid-flow-col gap-6 mt-6">
+    <div className=" grid gap-6 mt-6 grid-cols-2 sm:grid-cols-3 md:grid-cols-7 lg:grid-cols-7 ">
       <Button/>
       <Button />
       <Button/>

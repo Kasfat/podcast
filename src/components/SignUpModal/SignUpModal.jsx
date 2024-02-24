@@ -20,11 +20,11 @@ const SignUpModal = ({handleOnClose}) => {
         </div>
         <div>
           <p htmlFor="password" className=" text-white mb-2">Password:</p>
-          <input className=" w-[447px] h-8 bg-[#0C0C0C] rounded-lg  text-white px-2"/>
+          <input placeholder=" Enter Your Password" className=" w-[447px] h-8 bg-[#0C0C0C] rounded-lg  text-white px-2"/>
         </div>
         <div>
           <p htmlFor="confirmPassword" className=" text-white mb-2">Confirm Password:</p>
-          <input className=" w-[447px] h-8 bg-[#0C0C0C] rounded-lg text-white px-2"/>
+          <input placeholder="Enter Confirm Password" className=" w-[447px] h-8 bg-[#0C0C0C] rounded-lg text-white px-2"/>
         </div>
         <button type="submit" className="w-[210px] text-white bg-[#060606] px-6 py-2 rounded-full mt-2">Creat an account</button>
         <div>
